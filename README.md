@@ -14,7 +14,7 @@ to access rest api use the following JSON template and feel free to change input
         {
             "name": "Banana",
             "type": "FRUITS",
-            "price": 40.4
+            "price": 4.4
         },
         {
             "name": "Cereals",
