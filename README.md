@@ -1,6 +1,6 @@
 # internship-project-base
 
-to access rest api use the following JSON template and feel free to change input:
+To access rest api use the following JSON template and feel free to change input:
 
 
 {
