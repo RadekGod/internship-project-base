@@ -9,7 +9,7 @@ public class FifteenPercentDiscount {
 
     public static String NAME = "FifteenPercentDiscount";
 
-    public Receipt apply(Receipt receipt) {
+    public static Receipt apply(Receipt receipt) {
         if (shouldApply(receipt)) {
             var totalPrice = receipt.totalPrice().multiply(BigDecimal.valueOf(0.85));
             var discounts = receipt.discounts();
@@ -19,7 +19,7 @@ public class FifteenPercentDiscount {
         return receipt;
     }
 
-    private boolean shouldApply(Receipt receipt) {
+    private static boolean shouldApply(Receipt receipt) {
         return receipt.entries().stream()
                 .filter(receiptEntry -> receiptEntry.product().type().equals(Product.Type.GRAINS))
                 .map(ReceiptEntry::quantity)

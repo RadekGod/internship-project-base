@@ -28,14 +28,12 @@ public class FifteenPercentDiscountTest {
         receiptEntries.add(new ReceiptEntry(cereals, 6));
 
         var receipt = new Receipt(receiptEntries);
-        var fifteenPercentDiscount = new FifteenPercentDiscount();
-        var tenPercentDiscount = new TenPercentDiscount();
         var expectedTotalPrice = cheese.price().add(steak.price()).add(bread.price())
                 .add(cereals.price().multiply(BigDecimal.valueOf(6))).multiply(BigDecimal.valueOf(0.85).multiply(BigDecimal.valueOf(0.9)));
 
         // When
-        var receiptAfterFifteenPercentDiscount = fifteenPercentDiscount.apply(receipt);
-        var receiptAfterTenPercentDiscount = tenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
+        var receiptAfterFifteenPercentDiscount = FifteenPercentDiscount.apply(receipt);
+        var receiptAfterTenPercentDiscount = TenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
         // Then
         assertEquals(expectedTotalPrice, receiptAfterTenPercentDiscount.totalPrice());
         assertEquals(2, receiptAfterTenPercentDiscount.discounts().size());
@@ -52,14 +50,12 @@ public class FifteenPercentDiscountTest {
         receiptEntries.add(new ReceiptEntry(cereals, 6));
 
         var receipt = new Receipt(receiptEntries);
-        var fifteenPercentDiscount = new FifteenPercentDiscount();
-        var tenPercentDiscount = new TenPercentDiscount();
         var expectedTotalPrice = bread.price().multiply(BigDecimal.valueOf(1)).add(cereals.price()
                 .multiply(BigDecimal.valueOf(6))).multiply(BigDecimal.valueOf(0.85));
 
         // When
-        var receiptAfterFifteenPercentDiscount = fifteenPercentDiscount.apply(receipt);
-        var receiptAfterTenPercentDiscount = tenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
+        var receiptAfterFifteenPercentDiscount = FifteenPercentDiscount.apply(receipt);
+        var receiptAfterTenPercentDiscount = TenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
         // Then
         assertEquals(expectedTotalPrice, receiptAfterTenPercentDiscount.totalPrice());
         assertEquals(1, receiptAfterTenPercentDiscount.discounts().size());
@@ -80,14 +76,12 @@ public class FifteenPercentDiscountTest {
         receiptEntries.add(new ReceiptEntry(cereals, 1));
 
         var receipt = new Receipt(receiptEntries);
-        var fifteenPercentDiscount = new FifteenPercentDiscount();
-        var tenPercentDiscount = new TenPercentDiscount();
         var expectedTotalPrice = bread.price().add(cereals.price())
                 .add(cheese.price()).add(steak.price()).multiply(BigDecimal.valueOf(0.9));
 
         // When
-        var receiptAfterFifteenPercentDiscount = fifteenPercentDiscount.apply(receipt);
-        var receiptAfterTenPercentDiscount = tenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
+        var receiptAfterFifteenPercentDiscount = FifteenPercentDiscount.apply(receipt);
+        var receiptAfterTenPercentDiscount = TenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
         // Then
         assertEquals(expectedTotalPrice, receiptAfterTenPercentDiscount.totalPrice());
         assertEquals(1, receiptAfterTenPercentDiscount.discounts().size());
@@ -104,13 +98,11 @@ public class FifteenPercentDiscountTest {
         receiptEntries.add(new ReceiptEntry(cereals, 1));
 
         var receipt = new Receipt(receiptEntries);
-        var fifteenPercentDiscount = new FifteenPercentDiscount();
-        var tenPercentDiscount = new TenPercentDiscount();
         var expectedTotalPrice = bread.price().add(cereals.price());
 
         // When
-        var receiptAfterFifteenPercentDiscount = fifteenPercentDiscount.apply(receipt);
-        var receiptAfterTenPercentDiscount = tenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
+        var receiptAfterFifteenPercentDiscount = FifteenPercentDiscount.apply(receipt);
+        var receiptAfterTenPercentDiscount = TenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
         // Then
         assertEquals(expectedTotalPrice, receiptAfterTenPercentDiscount.totalPrice());
         assertEquals(0, receiptAfterTenPercentDiscount.discounts().size());

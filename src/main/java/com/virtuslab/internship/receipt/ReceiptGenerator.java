@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ReceiptGenerator {
 
-    public Receipt generate(Basket basket) {
+    public static Receipt generate(Basket basket) {
         List<ReceiptEntry> receiptEntries = new ArrayList<>();
         basket.getProducts()
         .stream()

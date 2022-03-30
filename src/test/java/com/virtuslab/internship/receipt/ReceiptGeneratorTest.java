@@ -25,10 +25,9 @@ class ReceiptGeneratorTest {
         cart.addProduct(bread);
         cart.addProduct(apple);
 
-        var receiptGenerator = new ReceiptGenerator();
 
         // When
-        var receipt = receiptGenerator.generate(cart);
+        var receipt = ReceiptGenerator.generate(cart);
 
         // Then
         assertNotNull(receipt);

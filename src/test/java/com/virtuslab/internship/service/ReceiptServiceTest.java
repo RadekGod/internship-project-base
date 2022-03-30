@@ -27,16 +27,13 @@ public class ReceiptServiceTest {
             basket.addProduct(steak);
             basket.addProduct(bread);
             basket.addProduct(cereals);
-            var receiptGenerator = new ReceiptGenerator();
-            var fifteenPercentDiscount = new FifteenPercentDiscount();
-            var tenPercentDiscount = new TenPercentDiscount();
             var expectedTotalPrice = cheese.price().add(steak.price()).add(bread.price())
                     .add(cereals.price()).multiply(BigDecimal.valueOf(0.9));
 
             // When
-            var receipt = receiptGenerator.generate(basket);
-            var receiptAfterFifteenPercentDiscount = fifteenPercentDiscount.apply(receipt);
-            var receiptAfterTenPercentDiscount = tenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
+            var receipt = ReceiptGenerator.generate(basket);
+            var receiptAfterFifteenPercentDiscount = FifteenPercentDiscount.apply(receipt);
+            var receiptAfterTenPercentDiscount = TenPercentDiscount.apply(receiptAfterFifteenPercentDiscount);
             // Then
             assertEquals(expectedTotalPrice, receiptAfterTenPercentDiscount.totalPrice());
             assertEquals(1, receiptAfterTenPercentDiscount.discounts().size());
